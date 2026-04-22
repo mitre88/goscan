@@ -3,7 +3,7 @@ package scan
 import (
 	"bufio"
 	"fmt"
-	"github.com/marco-lancini/goscan/core/utils"
+	"github.com/marco-lancini/goscan/goscan/core/utils"
 	"os"
 	"path/filepath"
 	"strings"

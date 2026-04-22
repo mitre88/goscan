@@ -2,9 +2,9 @@ package enum
 
 import (
 	"fmt"
-	"github.com/marco-lancini/goscan/core/model"
-	"github.com/marco-lancini/goscan/core/scan"
-	"github.com/marco-lancini/goscan/core/utils"
+	"github.com/marco-lancini/goscan/goscan/core/model"
+	"github.com/marco-lancini/goscan/goscan/core/scan"
+	"github.com/marco-lancini/goscan/goscan/core/utils"
 	"path/filepath"
 	"time"
 )

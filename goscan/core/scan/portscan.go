@@ -3,8 +3,8 @@ package scan
 import (
 	"fmt"
 	go_nmap "github.com/lair-framework/go-nmap"
-	"github.com/marco-lancini/goscan/core/model"
-	"github.com/marco-lancini/goscan/core/utils"
+	"github.com/marco-lancini/goscan/goscan/core/model"
+	"github.com/marco-lancini/goscan/goscan/core/utils"
 	"time"
 )
 
