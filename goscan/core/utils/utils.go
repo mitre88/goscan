@@ -112,8 +112,8 @@ func ParseCmd(s string) (string, []string) {
 
 // Extract the next argument from command line
 func ParseNextArg(args []string) (string, []string) {
-	if len(args) < 2 {
-		return args[0], make([]string, 0)
+	if len(args) < 1 {
+		return "", make([]string, 0)
 	}
 	return args[0], args[1:]
 }
