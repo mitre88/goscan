@@ -166,6 +166,19 @@ func CleanPath(s string) string {
 	return strings.Replace(s, "/", "_", -1)
 }
 
+// ValidateTarget checks if a target string contains shell metacharacters
+// Returns an error if invalid characters are found
+func ValidateTarget(target string) error {
+	// Shell metacharacters: | & ; $ ` < > ( ) [ ] { } # ! ~ * ? " '
+	metacharacters := []string{"|", "&", ";", "$", "`", "<", ">", "(", ")", "[", "]", "{", "}", "#", "!", "~", "*", "?", "\"", "'", "\\"}
+	for _, char := range metacharacters {
+		if strings.Contains(target, char) {
+			return fmt.Errorf("invalid character '%s' in target", char)
+		}
+	}
+	return nil
+}
+
 // Given a path and a list of strings, writes them to file
 func WriteArrayToFile(path string, s []string) {
 	Config.Log.LogDebug(fmt.Sprintf("Writing output to file: %s", path))

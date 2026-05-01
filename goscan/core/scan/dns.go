@@ -33,6 +33,12 @@ func ScanDNS(target string, kind string, baseIP string) {
 func DNSDiscovery(target string) {
 	utils.Config.Log.LogNotify("Starting DNS Discovery...")
 
+	// Validate target
+	if err := utils.ValidateTarget(target); err != nil {
+		utils.Config.Log.LogError(fmt.Sprintf("Invalid target: %s", err))
+		return
+	}
+
 	// -----------------------------------------------------------------------------------
 	// NMAP
 	// -----------------------------------------------------------------------------------
@@ -66,6 +72,12 @@ func DNSDiscovery(target string) {
 
 func DNSBruteforce(target string) {
 	utils.Config.Log.LogNotify("Starting DNS Bruteforce...")
+
+	// Validate target
+	if err := utils.ValidateTarget(target); err != nil {
+		utils.Config.Log.LogError(fmt.Sprintf("Invalid target: %s", err))
+		return
+	}
 
 	// -----------------------------------------------------------------------------------
 	// READ SOURCE FILE
@@ -111,6 +123,17 @@ func DNSBruteforce(target string) {
 
 func DNSBruteforceReverse(target string, baseIP string) {
 	utils.Config.Log.LogNotify("Starting Reverse DNS Bruteforce...")
+
+	// Validate targets
+	if err := utils.ValidateTarget(target); err != nil {
+		utils.Config.Log.LogError(fmt.Sprintf("Invalid target: %s", err))
+		return
+	}
+	if err := utils.ValidateTarget(baseIP); err != nil {
+		utils.Config.Log.LogError(fmt.Sprintf("Invalid baseIP: %s", err))
+		return
+	}
+
 	lower, upper := 0, 255
 	hosts := []string{}
 	tokens := strings.Split(baseIP, ".")
