@@ -172,6 +172,7 @@ func WriteArrayToFile(path string, s []string) {
 	f, err := os.OpenFile(path, os.O_RDWR|os.O_CREATE, 0755)
 	if err != nil {
 		Config.Log.LogError("Cannot create file")
+		return
 	}
 	defer f.Close()
 

@@ -70,7 +70,11 @@ func DNSBruteforce(target string) {
 	// -----------------------------------------------------------------------------------
 	// READ SOURCE FILE
 	// -----------------------------------------------------------------------------------
-	wordlistFile, _ := os.Open(utils.WORDLIST_DNS_BRUTEFORCE)
+	wordlistFile, err := os.Open(utils.WORDLIST_DNS_BRUTEFORCE)
+	if err != nil {
+		utils.Config.Log.LogError(fmt.Sprintf("Failed to open wordlist: %s", err))
+		return
+	}
 	defer wordlistFile.Close()
 	scanner := bufio.NewScanner(wordlistFile)
 	scanner.Split(bufio.ScanLines)

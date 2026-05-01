@@ -162,6 +162,7 @@ func loadFile(kind string, src string) {
 	file, err := os.Open(src)
 	if err != nil {
 		utils.Config.Log.LogError(fmt.Sprintf("Error while reading source file (%s): %s", src, err))
+		return
 	}
 	defer file.Close()
 	// Read line by line
@@ -425,6 +426,7 @@ func SetConfigFile(fname string) {
 	file, err := os.Open(fname)
 	if err != nil {
 		utils.Config.Log.LogError(fmt.Sprintf("Error while reading source file (%s): %s", fname, err))
+		return
 	}
 	defer file.Close()
 	// Read line by line
